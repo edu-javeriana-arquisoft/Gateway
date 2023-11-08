@@ -9,7 +9,7 @@ services:
       arqui:
         ipv4_address: 10.1.0.3
     ports:
-      - "8761:8761"
+      - "8083:8761"
     
 
   gateway:
@@ -19,7 +19,7 @@ services:
       arqui:
         ipv4_address: 10.1.0.2
     ports:
-      - "8080:8080"
+      - "8082:8080"
 
 
 networks:
