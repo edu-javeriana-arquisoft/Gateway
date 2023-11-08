@@ -1,0 +1,31 @@
+# Create network: docker network create arqui
+version: "3.9"
+
+services:
+  eureka:
+    hostname: eureka-server
+    build: ./discovery
+    networks:
+      arqui:
+        ipv4_address: 10.1.0.3
+    ports:
+      - "8761:8761"
+    
+
+  gateway:
+    hostname: apigateway
+    build: ./apigateway
+    networks:
+      arqui:
+        ipv4_address: 10.1.0.2
+    ports:
+      - "8080:8080"
+
+
+networks:
+  arqui:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.1.0.0/24
