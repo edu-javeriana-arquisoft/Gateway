@@ -6,8 +6,7 @@ services:
     hostname: eureka-server
     build: ./discovery
     networks:
-      arqui:
-        ipv4_address: 10.1.0.3
+     - arqui
     ports:
       - "8083:8761"
     
@@ -15,9 +14,10 @@ services:
   gateway:
     hostname: apigateway
     build: ./apigateway
+    environment:
+      JWK_URI: http://keycloak:8080/realms/auth/protocol/openid-connect/certs
     networks:
-      arqui:
-        ipv4_address: 10.1.0.2
+      - arqui
     ports:
       - "8082:8080"
 
@@ -25,7 +25,4 @@ services:
 networks:
   arqui:
     driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 10.1.0.0/24
+    external: true

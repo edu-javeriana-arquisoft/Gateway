@@ -1,7 +1,7 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://10.1.0.3:8761/eureka/
+      defaultZone: http://eureka:8761/eureka/
     register-with-eureka: true
   instance:
     prefer-ip-address: true
@@ -16,3 +16,5 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+
+JWKS_URL: http://keycloak:8080/realms/auth/protocol/openid-connect/certs
